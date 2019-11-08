@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap|Russo+One&display=swap");
+@media only screen and (max-width: 600px) {
+  body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column !important;
+    height: 100vh !important;
+  }
+
+  #finishGame {
+    width: 90%;
+  }
+}
+* {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+body, html {
+  margin: 0;
+  height: auto;
+  background-color: #0d0d0d;
+}
+
+#hamburger {
+  position: fixed;
+  top: 2.5%;
+  left: 1%;
+  cursor: pointer;
+  z-index: 9999;
+}
+#hamburger .line {
+  background: #ff9900;
+  width: 40px;
+  height: 5px;
+  border-radius: 50px;
+  margin: 5px;
+  transition: all 0.2s;
+}
+
+#logoBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Russo One", sans-serif;
+  margin-top: 10%;
+}
+#logoBox #logo {
+  color: #cc7a00;
+  border: 2px solid #cc7a00;
+  width: auto;
+  padding: 10px 15px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h5 {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 0 0;
+  color: #ff9900;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.flexFixer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3%;
+}
+.flexFixer input {
+  border-radius: 50px;
+  border: 1px solid #ccc;
+  padding: 7px;
+  margin: 20px 50px 50px 50px;
+  font-size: 20px;
+  width: 40%;
+}
+.flexFixer input:focus {
+  outline: none;
+}
+.flexFixer select {
+  width: 300px;
+  height: 60px;
+  font-size: 20px;
+  background-color: #ff9900;
+  color: #1d1d1d;
+  border-radius: 3px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 3%;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 3px;
+  font-size: 20px;
+  background-color: #0d0d0d;
+  color: #ff9900;
+  outline: none;
+  border: none;
+  padding: 15px 35px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid #ff9900;
+}
+.btn:hover {
+  color: #0d0d0d;
+  background: #ff9900;
+}
+
+#tools {
+  position: fixed;
+  color: #0d0d0d;
+  top: 7%;
+  left: -100%;
+  transition: all 0.2s;
+  background: #ff9900;
+  padding: 30px;
+  z-index: 99999;
+  -webkit-box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+#tools #points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d1d1d;
+  border-radius: 3px;
+  z-index: 999999;
+  font-size: 20px;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+}
+#tools #points span {
+  display: block;
+  margin-left: 5px;
+  font-size: 22px;
+  font-weight: bold;
+}
+#tools #timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1d1d1d;
+  top: 30%;
+  right: 0;
+  z-index: 999999;
+  font-size: 22px;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  background: -moz-radial-gradient(center, ellipse cover, black 0%, #262424 0%, black 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, black), color-stop(0%, #262424), color-stop(100%, black));
+  background: -webkit-radial-gradient(center, ellipse cover, black 0%, #262424 0%, black 100%);
+  background: -o-radial-gradient(center, ellipse cover, black 0%, #262424 0%, black 100%);
+  background: -ms-radial-gradient(center, ellipse cover, black 0%, #262424 0%, black 100%);
+  background: radial-gradient(ellipse at center, black 0%, #262424 0%, black 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#000000", endColorstr="#000000", GradientType=1 );
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  transition: all 0.2s;
+}
+#container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width: 15%;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 0.2s;
+}
+#container div img {
+  border-radius: 3px;
+  -webkit-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#container div img:hover {
+  -webkit-box-shadow: 0px 0px 15px 3px #b6a716;
+  -moz-box-shadow: 0px 0px 15px 3px #b6a716;
+  box-shadow: 0px 0px 15px 3px #b6a716;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
+}
+#finishGame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  flex-direction: column;
+  background: #ff9900;
+  width: 40%;
+  height: 40%;
+  padding: 30px 50px;
+  color: #0d0d0d;
+}
+#finishGame div {
+  text-align: center;
+  margin: 10px 0;
+}
+#finishGame div img {
+  width: 100px;
+}
+#finishGame div b {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+#winBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff9900;
+  font-size: 30px;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  color: #0d0d0d;
+  transform: translate(-50%, -50%);
+}
+#winBox h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff9900;
+  text-align: center;
+  padding: 20px 30px;
+  color: #0d0d0d;
+  width: 70%;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+#winBox #recordBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  background-color: #ff9900;
+  width: 80%;
+  padding: 20px 0 20px 0;
+  flex-direction: column;
+  height: 240px;
+  color: #0d0d0d;
+}
+#winBox #recordBox #record {
+  letter-spacing: 5px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  border-bottom: 2px solid #0d0d0d;
+  margin-bottom: 20px;
+}
+#winBox #recordBox div span {
+  font-weight: bold;
+  color: #0d0d0d;
+}
+
+#overlayer {
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=style.css.map */

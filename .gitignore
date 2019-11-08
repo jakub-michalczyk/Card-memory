@@ -1,0 +1,6 @@
+*.scss
+<<<<<<< HEAD
+*.map
+=======
+node_modules/
+>>>>>>> Changed directory tree, bundled and minified files
