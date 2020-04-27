@@ -1,8 +1,8 @@
 let game = {
     playerName: '',
     difficulty: 10,
-    attempts: 0
-}
+    attempts: 0,
+};
 let CHOOSED_DIFF;
 let viewingCard = 0;
 let generatedCards = new Set();
@@ -13,9 +13,14 @@ let menu;
 let menuHide = 0;
 
 
-(function init(){
-    if(localStorage.getItem('record') !== null){
-        records = JSON.parse(localStorage.getItem('record'))
+(function setup(){
+    try{
+        if(localStorage.getItem('record') !== null){
+            records = JSON.parse(localStorage.getItem('record'))
+        }
+    }
+    catch(err){
+        console.log(`Microsoft Edge doesn't support localStorage: ${err}`)
     }
     document.querySelector('button').addEventListener('click', chooseDifficulty);
 })();
@@ -34,17 +39,12 @@ function chooseDifficulty(){
         game.difficulty = 30;
     } 
 
-    if(document.querySelector('#name').value === ''){
-        game.playerName = 'Unnamed';
-    }
-    else{
-        game.playerName = document.querySelector('#name').value;
-    }
+    document.querySelector('#name').value === '' ? game.playerName = 'Unnamed' : game.playerName = document.querySelector('#name').value;
 
     return renderBoard();
 }
 
-function renderBoard(diff){
+function renderBoard(){
     const container = document.createElement('div');
     const hamburger = document.createElement('div');
     
@@ -110,6 +110,7 @@ function createCardSets(set, size1, size2){
     if(size2 === undefined){
         size2 = size1;
     }
+    //Fill set with random cards id
     while(set.size < size1){
         set.add(Math.floor(Math.random() * size2))
     }
@@ -174,7 +175,8 @@ function generateCards(){
 }
 
 function viewCard(e){
-    document.querySelector('#actualPoints').textContent = `${game.attempts++}`;
+    ++game.attempts;
+    document.querySelector('#actualPoints').textContent = `${game.attempts}`;
 
     if(e.target.dataset.guessed === 'guessed'){
         //IF CARD IS ALREADY GUESSING STOP FUNCTION
@@ -230,7 +232,9 @@ function goodGuess(){
     document.querySelectorAll('.card').forEach( card => {
         if(card.dataset.guessed === 'guessed'){
             setTimeout(() => {
-                //ROTATE CARD TO WHITE BACKSIDE
+                const placeholder = document.createElement("span");
+                placeholder.className = "placeholder";
+                //ROTATE CARD TO BLACK BACKSIDE
                 card.src = '../img/backGuessed.jpg';
                 card.removeEventListener('click', viewCard);
                 card.parentNode.style = `transition:all 0.5s;opacity:0`
@@ -238,7 +242,8 @@ function goodGuess(){
                     if(document.querySelector('#overlayer') !== null){
                         document.querySelector('#overlayer').remove();
                     }
-                    card.parentNode.remove();
+                    card.parentNode.appendChild(placeholder);
+                    card.remove();
                     return checkWin();
                 }, 500);
             }, 500)
@@ -291,9 +296,17 @@ function clearAnimation(){
 
 function checkWin(){
     const box = document.querySelectorAll('#container div');
-    if(box.length === 0 ){
+    let check = Array.from(box).every(checkIfCardsIsGuessed);
+   
+    if(check){
         stopTime();
         return createWinScreen();
+    }
+}
+
+function checkIfCardsIsGuessed(element){
+    if(element.children[0] !== undefined){
+        return element.children[0].nodeName === "SPAN";
     }
 }
 
@@ -306,9 +319,9 @@ function createWinScreen(){
             <div>
                 <img alt="Icon" src='../img/reverseIcon.png'>
             </div>
-            <div>Name: <b>${game.playerName}</b></div>
-            <div>Time: <b>${document.querySelector('#timer').textContent.replace(/\s/g , '')}</b></div>
-            <div>Clicks: <b>${game.attempts}</b></div>
+            <div class="finishBoxElem">Name: <b>${game.playerName}</b></div>
+            <div class="finishBoxElem">Time: <b>${document.querySelector('#timer').textContent.replace(/\s/g , '')}</b></div>
+            <div class="finishBoxElem">Clicks: <b>${game.attempts}</b></div>
          </div>`;
 
     document.body.appendChild(box);
