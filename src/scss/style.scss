@@ -28,8 +28,7 @@ $darkblack: #0d0d0d;
 body, html{
     margin:0;
     height: auto;
-    background-color:$darkblack;
-    overflow-y: hidden;
+    background: $darkblack;
     overflow-x: hidden;
 }
 
@@ -38,7 +37,7 @@ body, html{
     top:2.5%;
     left:1%;
     cursor: pointer;
-    z-index:9999;
+    z-index:99999999;
     .line{
         background: $yellow;
         width:40px;
@@ -46,6 +45,9 @@ body, html{
         border-radius:50px;
         margin:5px;
         transition: all .2s;
+        -webkit-box-shadow: 3px 3px 18px 1px rgba(0,0,0,0.75);
+        -moz-box-shadow: 3px 3px 18px 1px rgba(0,0,0,0.75);
+        box-shadow: 3px 3px 18px 1px rgba(0,0,0,0.75);
     }
 }
 
@@ -106,7 +108,7 @@ h5{
 }
 
 .btn{
-    margin-top:3%;
+    margin:3% 0;
     text-transform: uppercase;
     letter-spacing: 3px;
     border-radius:3px;
@@ -190,7 +192,7 @@ h5{
     background: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(38,36,36,1) 0%, rgba(0,0,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     flex-wrap: wrap;
     transition: all 0.2s;
     div{
@@ -259,6 +261,7 @@ h5{
     font-size:30px;
     flex-direction: column;
     position: absolute;
+    margin: 5% 0;
     width:100%;
     height:100%;
     top:50%;
